@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "topic-keywords"
+version = "0.1.0"
+description = "This project provides tools to extract keywords on a specific topic."
+authors = ["annalitvin <litvin_any@ukr.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+scikit-learn = "^1.1.1"
+matplotlib = "^3.6.3"
+nltk = "^3.8.1"
+pandas = "^2.0.3"
+pydantic = "^2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^4.0.1"
+black = "^24.1.0"
+pytest = "^7.0.1"
+mypy = "^1.0.0"
+tox = "^4.13.0"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "hug"
+line_length = 120
+src_paths = ["app", "tests"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
